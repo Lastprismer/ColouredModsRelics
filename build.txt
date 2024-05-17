@@ -1,0 +1,5 @@
+displayName = ColouredModsRelics
+author = 幻尘 &amp; Lastprismer
+version = 0.1.0.2
+softAfter = ThoriumMod, Consolaria, CatalystMod, CalamityHunt, NoxusBoss, CalValEX, SOTS, SpiritMod
+side = Client

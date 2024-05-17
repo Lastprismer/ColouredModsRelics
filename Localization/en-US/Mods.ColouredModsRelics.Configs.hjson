@@ -1,0 +1,44 @@
+RainbowConfig: {
+	DisplayName: Rainbow Config
+	Headers.RainbowHeader: Toggle Colored Relic Sprites
+
+	ThoriumMod: {
+		Label: Thorium
+		Tooltip: ""
+	}
+
+	Consolaria: {
+		Label: Consolaria
+		Tooltip: ""
+	}
+
+	CatalystMod: {
+		Label: Catalyst
+		Tooltip: ""
+	}
+
+	CalamityHunt: {
+		Label: Hunt of the Old God
+		Tooltip: ""
+	}
+
+	NoxusBoss: {
+		Label: Calamity: Wrath of the Gods
+		Tooltip: ""
+	}
+
+	CalValEX: {
+		Label: Calamity's Vanities
+		Tooltip: ""
+	}
+
+	SOTS: {
+		Label: Secrets Of The Shadows
+		Tooltip: ""
+	}
+
+	SpiritMod: {
+		Label: Spirit Mod
+		Tooltip: ""
+	}
+}

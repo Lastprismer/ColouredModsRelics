@@ -1,0 +1,22 @@
+﻿[h1] Rainbow Master: Colored Relics[/h1]
+This mod provides relic coloring for the following mods:
+[olist]
+[*] Thorium Mod
+[*] Catalyst Mod
+[*] Consolaria
+[*] Hunt of old god
+[*] Calamity: Wrath of the Gods
+[*] Spirit Mod
+[*] Secrets Of The Shadows
+[*] Calamity's Vanities Mod
+[/olist]
+
+Fed up with colored relics? Craving the simplicity of the original design?
+ - Effortlessly toggle the color effects in the game’s configuration settings. No need to quit the game, making it more convenient than swapping out texture packs!
+
+Concerned about disabling this mod after use, fearing crashes similar to the Colored Calamity Relics?
+ - Worry no more! Simply remove the mod. It introduces no new contents, ensuring everything remains intact post-uninstallation."
+
+[i] Thank you for the help provided by Lastprismer, Hakuzousu, and CallMeXianbei![/i]
+
+[quote=tModLoader]Developed By 幻尘 & Lastprismer[/quote]

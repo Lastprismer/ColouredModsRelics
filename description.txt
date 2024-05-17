@@ -1,0 +1,28 @@
+本模组为以下模组提供了圣物上色：
+瑟银
+灾劫
+Consolaria
+旧神之猎
+众神之怒
+魂灵
+暗影奥秘
+虚荣
+与以上模组一起使用即可生效。
+本模组会持续更新为更多模组提供圣物上色。
+
+感谢棱镜与梦山之主提供的帮助！
+
+This mod provides relic coloring for the following mods:
+Thorium Mod
+Catalyst Mod
+Consolaria
+Hunt of old god
+Calamity: Wrath of the Gods
+Spirit Mod
+Secrets Of The Shadows
+Calamity's Vanities
+It can take effect when used together with the above mods.
+You can switch whether to color the mod relics in the mod settings.
+This mod will continue to be updated to provide holy object coloring for more mods.
+
+Thank you for the help provided by Lastprismer, Hakuzousu, and I'mXianbei!

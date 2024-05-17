@@ -1,0 +1,44 @@
+RainbowConfig: {
+	DisplayName: 虹彩设定
+	Headers.RainbowHeader: 开关圣物彩色贴图
+
+	ThoriumMod: {
+		Label: 瑟银（Thorium Mod）
+		Tooltip: ""
+	}
+
+	Consolaria: {
+		Label: 移动端复刻（Consolaria）
+		Tooltip: ""
+	}
+
+	CatalystMod: {
+		Label: 灾劫（Catalyst Mod）
+		Tooltip: ""
+	}
+
+	CalamityHunt: {
+		Label: 旧神之猎（Hunt of the Old God）
+		Tooltip: ""
+	}
+
+	NoxusBoss: {
+		Label: 众神之怒（Calamity: Wrath of the Gods）
+		Tooltip: ""
+	}
+
+	CalValEX: {
+		Label: 灾厄虚荣 / 灾厄时装（Calamity's Vanities）
+		Tooltip: ""
+	}
+
+	SOTS: {
+		Label: 暗影奥秘（Secrets Of The Shadows）
+		Tooltip: ""
+	}
+
+	SpiritMod: {
+		Label: 魂灵（Spirit Mod）
+		Tooltip: ""
+	}
+}
