@@ -12,8 +12,11 @@ namespace ColouredModsRelics.Common.Mods
     {
         public override string ModName => "NoxusBoss";
 
-        public readonly string[] relics = ["NamelessDeityRelic", "NoxusRelic"];
-        public override MethodBase HookOrigin => Mod.Code.GetType("NoxusBoss.Core.Autoloaders.RelicAutoloader+AutoloadableRelicTile").GetMethod("SpecialDraw", BindingFlags.Public | BindingFlags.Instance);
+        private static readonly string[] relics = ["NamelessDeityRelic", "NoxusRelic"];
+
+        public WotGRelic() : base() {
+            HookInfo = new MethodBaseInfo(ModName, "NoxusBoss.Core.Autoloaders.RelicAutoloader+AutoloadableRelicTile", "SpecialDraw");
+        }
 
         public override ILContext.Manipulator Manip => il =>
         {
@@ -22,7 +25,7 @@ namespace ColouredModsRelics.Common.Mods
             if (cursor.TryGotoNext(MoveType.After, i => i.MatchLdarg0(), i => i.MatchLdfld(out _), i => i.MatchCallvirt(out _)))
             {
                 cursor.EmitLdarg0();
-                cursor.EmitCall(typeof(ModTile).GetProperty("Type", BindingFlags.Instance | BindingFlags.Public).GetGetMethod());
+                cursor.EmitCall(ModTile_Type);
                 cursor.EmitDelegate<Func<Texture2D, int, Texture2D>>((tex, i) => Active ? ColoredRelicTileAssets[i].Value : tex);
             }
         };

@@ -10,15 +10,15 @@ namespace ColouredModsRelics.Core
     [Autoload(Side = ModSide.Client)]
     public class RainbowLoader : ModSystem
     {
-        public readonly static string[] SupportedMods = ["ThoriumMod", "Consolaria", "CatalystMod", "CalamityHunt", "NoxusBoss", "CalValEX", "SOTS", "SpiritMod"];
-
+        public static readonly string[] SupportedMods = ["CalValEX", "CalamityHunt", "CatalystMod", "Consolaria", "ContinentOfJourney", "Coralite", "DDMod", "NoxusBoss", "PrimeRework", "Redemption", "SOTS", "SpiritMod", "Spooky", "StarlightRiver", "ThoriumMod"];
+         
         // 单例
         public static List<ModRainbowRelics> RainbowRelicIntances = new();
 
         // ID表
         public static Dictionary<string, int> ModID = new();
 
-        public override void Load()
+        public override void OnModLoad()
         {
             IEnumerable<Type> modsRecord = AssemblyManager.GetLoadableTypes(Mod.Code).Where(type => type.IsSubclassOf(typeof(ModRainbowRelics)) && !type.IsAbstract && !type.ContainsGenericParameters);
             foreach (Type type in modsRecord)

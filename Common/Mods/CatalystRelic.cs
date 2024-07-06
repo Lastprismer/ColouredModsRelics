@@ -1,4 +1,5 @@
 ﻿using ColouredModsRelics.Common.Config;
+using ColouredModsRelics.Core;
 using Microsoft.Xna.Framework.Graphics;
 using MonoMod.Cil;
 using System;
@@ -12,7 +13,10 @@ namespace ColouredModsRelics.Common.Mods
     {
         public override string ModName => "CatalystMod";
 
-        public override MethodBase HookOrigin => Mod.Code.GetType("CatalystMod.Tiles.Furniture.BossRelics").GetMethod("DrawRelic", BindingFlags.NonPublic | BindingFlags.Instance);
+        public CatalystRelic() : base()
+        {
+            HookInfo = new MethodBaseInfo(ModName, "CatalystMod.Tiles.Furniture.BossTrophies.SuperbossRelics", "SpecialDraw");
+        }
 
         public override ILContext.Manipulator Manip => il =>
         {
@@ -21,10 +25,6 @@ namespace ColouredModsRelics.Common.Mods
             if (cursor.TryGotoNext(MoveType.After, i => i.MatchLdcI4(2), i => i.MatchCall(out _), i => i.MatchCallvirt(out _)))
             {
                 cursor.EmitDelegate((Texture2D tex) => Active ? ColoredRelicTileAssets[RelicTileTypes[0]].Value : tex);
-            }
-            else
-            {
-                ColouredModsRelics.Instance.Logger.Warn($"{ModName}: needs update");
             }
         };
 
@@ -41,7 +41,7 @@ namespace ColouredModsRelics.Common.Mods
 
         public override IEnumerable<ModTile> GetRelicTiles()
         {
-            if (Mod.TryFind("BossRelics", out ModTile relicTile))
+            if (Mod.TryFind("SuperbossRelics", out ModTile relicTile))
                 return [relicTile];
             else
             {

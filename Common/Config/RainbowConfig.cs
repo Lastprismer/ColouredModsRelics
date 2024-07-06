@@ -1,6 +1,6 @@
-﻿using ColouredModsRelics.Core;
+
+using ColouredModsRelics.Core;
 using System.ComponentModel;
-using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
 namespace ColouredModsRelics.Common.Config
@@ -26,39 +26,67 @@ namespace ColouredModsRelics.Common.Config
                 }
             }
 
-            QuickToggle("ThoriumMod", ThoriumMod);
-            QuickToggle("Consolaria", Consolaria);
-            QuickToggle("CatalystMod", CatalystMod);
-            QuickToggle("CalamityHunt", CalamityHunt);
-            QuickToggle("NoxusBoss", NoxusBoss);
             QuickToggle("CalValEX", CalValEX);
+            QuickToggle("CalamityHunt", CalamityHunt);
+            QuickToggle("CatalystMod", CatalystMod);
+            QuickToggle("Consolaria", Consolaria);
+            QuickToggle("ContinentOfJourney", ContinentOfJourney);
+            QuickToggle("Coralite", Coralite);
+            QuickToggle("DDMod", DDMod);
+            QuickToggle("NoxusBoss", NoxusBoss);
+            QuickToggle("PrimeRework", PrimeRework);
+            QuickToggle("Redemption", Redemption);
             QuickToggle("SOTS", SOTS);
             QuickToggle("SpiritMod", SpiritMod);
+            QuickToggle("Spooky", Spooky);
+            QuickToggle("StarlightRiver", StarlightRiver);
+            QuickToggle("ThoriumMod", ThoriumMod);
         }
 
         [Header("RainbowHeader")]
         [DefaultValue(true)]
-        public bool ThoriumMod;
-
-        [DefaultValue(true)]
-        public bool Consolaria;
-
-        [DefaultValue(true)]
-        public bool CatalystMod;
+        public bool CalValEX;
 
         [DefaultValue(true)]
         public bool CalamityHunt;
 
         [DefaultValue(true)]
+        public bool CatalystMod;
+
+        [DefaultValue(true)]
+        public bool Consolaria;
+
+        [DefaultValue(true)]
+        public bool ContinentOfJourney;
+
+        [DefaultValue(true)]
+        public bool Coralite;
+
+        [DefaultValue(true)]
+        public bool DDMod;
+
+        [DefaultValue(true)]
         public bool NoxusBoss;
 
         [DefaultValue(true)]
-        public bool CalValEX;
+        public bool PrimeRework;
+
+        [DefaultValue(true)]
+        public bool Redemption;
 
         [DefaultValue(true)]
         public bool SOTS;
 
         [DefaultValue(true)]
         public bool SpiritMod;
+
+        [DefaultValue(true)]
+        public bool Spooky;
+
+        [DefaultValue(true)]
+        public bool StarlightRiver;
+
+        [DefaultValue(true)]
+        public bool ThoriumMod;
     }
 }

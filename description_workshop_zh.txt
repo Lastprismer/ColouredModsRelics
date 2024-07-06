@@ -1,0 +1,24 @@
+﻿将以下Mod的Boss圣物变为彩色：
+[*] 灾厄虚荣（Calamity's Vanities）
+[*] 旧神之猎（Hunt of the Old God）
+[*] 灾劫（Catalyst Mod）
+[*] 移动版拓展（Consolaria）
+[*] 旅人归途
+[*] 珊瑚石
+[*] 沉睡黎明
+[*] 众神之怒（Calamity: Wrath of the Gods）
+[*] 机械Boss重置（Mech Bosses Rework）
+[*] 救赎（Mod of Redemption）
+[*] 暗影奥秘（Secrets Of The Shadows）
+[*] 魂灵（Spirit Mod）
+[*] 惊惧（Spooky Mod）
+[*] 星光河（Starlight River）
+[*] 瑟银（Thorium Mod）
+
+彩色贴图看累了，想看看原版贴图？
+- 可以在配置设定中开关上色效果，不需要退出游戏，比切换材质包还简单！
+
+使用后想关闭这个Mod，但是担心像隔壁灾厄圣物上色一样崩档?
+- 不用怕，直接卸载即可。本Mod没有添加任何新内容，卸载后该是什么就是什么。
+
+感谢由棱镜、梦山之主、叫我仙贝所提供的帮助！

@@ -15,7 +15,9 @@ namespace ColouredModsRelics.Common.Mods
     {
         public override string ModName => "SOTS";
 
-        public override MethodBase HookOrigin => Mod.Code.GetType("SOTS.Items.Banners.SOTSRelics").GetMethod("SpecialDraw", BindingFlags.Public | BindingFlags.Instance);
+        public SOTSRelic() : base() {
+            HookInfo = new MethodBaseInfo(ModName, "SOTS.Items.Banners.SOTSRelics", "SpecialDraw");
+        }
 
         public override ILContext.Manipulator Manip => il =>
         {

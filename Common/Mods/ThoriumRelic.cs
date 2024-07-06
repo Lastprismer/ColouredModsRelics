@@ -10,7 +10,10 @@ namespace ColouredModsRelics.Common.Mods
     {
         public override string ModName => "ThoriumMod";
 
-        public override MethodBase HookOrigin => Mod.Code.GetType(BaseRelicTileType).GetMethod("SpecialDraw", BindingFlags.Public | BindingFlags.Instance);
+        public ThoriumRelic() : base() {
+            HookInfo = new MethodBaseInfo(ModName, BaseRelicTileType, "SpecialDraw");
+        }
+
         public override ILContext.Manipulator Manip => il =>
         {
             ILCursor cursor = new(il);

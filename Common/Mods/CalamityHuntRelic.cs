@@ -14,11 +14,16 @@ namespace ColouredModsRelics.Common.Mods
     {
         private Hook hook;
         public override string ModName => "CalamityHunt";
+
+        public CalamityHuntRelic() {
+            HookInfo = new MethodBaseInfo(ModName, "CalamityHunt.Content.Tiles.RelicTile", "SpecialDraw");
+        }
+
         private delegate void orig_SpecialDraw(object self, int i, int j, SpriteBatch spriteBatch);
+
         public override void LoadHook()
         {
-            hook = new(Mod.Code.GetType("CalamityHunt.Content.Tiles.Autoloaded.AutoloadedBossRelicTile").GetMethod("SpecialDraw", BindingFlags.Public | BindingFlags.Instance), On_SpecialDraw);
-            hook.Apply();
+            hook = HookInfo.MakeHook(On_SpecialDraw);
         }
         public override void UnloadHook()
         {
@@ -27,7 +32,7 @@ namespace ColouredModsRelics.Common.Mods
         }
         public override IEnumerable<ModItem> GetRelicItems()
         {
-            if (Mod.TryFind("GoozmaRelicItem", out ModItem relicItem))
+            if (Mod.TryFind("GoozmaRelic", out ModItem relicItem))
                 return [relicItem];
             else
             {

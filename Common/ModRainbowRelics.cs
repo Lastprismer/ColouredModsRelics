@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using ColouredModsRelics.Common.Mods;
+using Humanizer;
+using Microsoft.Xna.Framework.Graphics;
+using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using rail;
 using ReLogic.Content;
@@ -7,6 +10,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Reflection;
+using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 using static MonoMod.Cil.ILContext;
@@ -15,6 +19,71 @@ namespace ColouredModsRelics.Common
 {
     public abstract class ModRainbowRelics
     {
+        public class MethodBaseInfo
+        {
+            public string AssemblyName;
+            public string TypeName;
+            public string MethodName;
+            public BindingFlags Flags;
+
+            public MethodBaseInfo(string assemblyName, string typeName, string methodName, BindingFlags flags = BindingFlags.Public | BindingFlags.Instance)
+            {
+                AssemblyName = assemblyName;
+                TypeName = typeName;
+                MethodName = methodName;
+                Flags = flags;
+            }
+
+            public ILHook MakeILHook(Manipulator manipulator)
+            {
+                try
+                {
+                    return new ILHook(GetMethodBase(ModLoader.GetMod(AssemblyName).Code), manipulator);
+                }
+                catch (KeyNotFoundException e)
+                {
+                    ColouredModsRelics.Instance.Logger.Error("KeyNotFoundException: 未找到对应 Mod，请将信息报告给圣物上色 Mod 开发者：{0}".FormatWith(e.Message));
+                }
+                catch (Exception e)
+                {
+                    ColouredModsRelics.Instance.Logger.Error("Exception: ILHook加载失败，请尝试检查游戏完整性，或将信息报告给圣物上色 Mod 开发者：{0}".FormatWith(e.Message));
+                }
+                return null;
+            }
+
+            public Hook MakeHook(Delegate target)
+            {
+                try
+                {
+                    return new Hook(GetMethodBase(ModLoader.GetMod(AssemblyName).Code), target);
+                }
+                catch (Exception e)
+                {
+                    ColouredModsRelics.Instance.Logger.Error("Exception: Hook加载失败，请尝试检查游戏完整性，或将信息报告给圣物上色 Mod 开发者：{0}".FormatWith(e.Message));
+                }
+                return null;
+            }
+
+            public MethodBase GetMethodBase(Assembly assembly)
+            {
+                try
+                {
+                    var type = assembly.GetType(TypeName, true);
+                    return type.GetMethod(MethodName, Flags);
+                }
+                catch (TypeLoadException e)
+                {
+                    // TODO：Localize this
+                    // ColouredModsRelics.Instance.Logger.Error(Language.GetTextValue(ErrorTextsKey + ".TypeLoadException", e.Message));
+                    ColouredModsRelics.Instance.Logger.Error("TypeLoadException: Mod DLL加载失败，请尝试检查游戏完整性，或将信息报告给圣物上色Mod开发者：{0}".FormatWith(e.Message));
+                    return null;
+                }
+            }
+
+        }
+
+        public static readonly MethodBase ModTile_Type;
+
         // 彩色圣物物品
         public Dictionary<int, Asset<Texture2D>> ColoredRelicItemAssets;
 
@@ -36,7 +105,7 @@ namespace ColouredModsRelics.Common
         // 用于处理SpecialDraw的ILHook
         protected List<ILHook> Hooks;
 
-        public virtual MethodBase HookOrigin { get; }
+        public MethodBaseInfo HookInfo;
 
         public virtual Manipulator Manip { get; }
 
@@ -61,6 +130,11 @@ namespace ColouredModsRelics.Common
             RelicTileTypes = new();
         }
 
+        static ModRainbowRelics()
+        {
+            ModTile_Type = typeof(ModTile).GetProperty("Type", BindingFlags.Instance | BindingFlags.Public).GetGetMethod();
+        }
+
         public virtual void Reset()
         {
             ColoredRelicItemAssets.Clear();
@@ -71,7 +145,14 @@ namespace ColouredModsRelics.Common
 
         public virtual void InitHooks()
         {
-            Hooks = [new ILHook(HookOrigin, Manip)];
+            var hook = HookInfo.MakeILHook(Manip);
+            if (hook is null)
+            {
+                Hooks = [];
+                return;
+            }
+            Hooks = [hook];
+            return;
         }
 
         public virtual void LoadHook()
@@ -100,13 +181,10 @@ namespace ColouredModsRelics.Common
             if (string.IsNullOrEmpty(BaseRelicItemType))
             {
                 ColouredModsRelics.Instance.Logger.Warn($"{ModName}物品加载失败：BaseRelicItemType为空，需要重写GetRelicTileTypes");
-                return Enumerable.Empty<ModItem>();
+                return [];
             }
             Type RelicItemType = Mod.Code.GetType(BaseRelicItemType);
-            IEnumerable<ModItem> relicItems = Mod.GetContent().Where(c =>
-            {
-                return c is ModItem && c.GetType().IsSubclassOf(RelicItemType);
-            }).Select(c => (ModItem)c);
+            IEnumerable<ModItem> relicItems = Mod.GetContent().Where(c => c is ModItem && c.GetType().IsSubclassOf(RelicItemType)).Select(c => (ModItem)c);
             return relicItems;
         }
 
@@ -115,13 +193,10 @@ namespace ColouredModsRelics.Common
             if (string.IsNullOrEmpty(BaseRelicTileType))
             {
                 ColouredModsRelics.Instance.Logger.Warn($"{ModName}物块加载失败：BaseRelicTileType为空，需要重写GetRelicTileTypes");
-                return Enumerable.Empty<ModTile>();
+                return [];
             }
             Type RelicTileType = Mod.Code.GetType(BaseRelicTileType);
-            IEnumerable<ModTile> relicTiles = Mod.GetContent().Where(c =>
-            {
-                return c is ModTile t && c.GetType().IsSubclassOf(RelicTileType);
-            }).Select(c => (ModTile)c);
+            IEnumerable<ModTile> relicTiles = Mod.GetContent().Where(c => c is ModTile t && c.GetType().IsSubclassOf(RelicTileType)).Select(c => (ModTile)c);
             return relicTiles;
         }
 

@@ -2,18 +2,8 @@ RainbowConfig: {
 	DisplayName: Rainbow Config
 	Headers.RainbowHeader: Toggle Colored Relic Sprites
 
-	ThoriumMod: {
-		Label: Thorium
-		Tooltip: ""
-	}
-
-	Consolaria: {
-		Label: Consolaria
-		Tooltip: ""
-	}
-
-	CatalystMod: {
-		Label: Catalyst
+	CalValEX: {
+		Label: Calamity's Vanities
 		Tooltip: ""
 	}
 
@@ -22,13 +12,43 @@ RainbowConfig: {
 		Tooltip: ""
 	}
 
+	CatalystMod: {
+		Label: Catalyst
+		Tooltip: ""
+	}
+
+	Consolaria: {
+		Label: Consolaria
+		Tooltip: ""
+	}
+
+	ContinentOfJourney: {
+		Label: Homeward Journey
+		Tooltip: ""
+	}
+
+	Coralite: {
+		Label: Coralite
+		Tooltip: ""
+	}
+
+	DDMod: {
+		Label: Dormant Dawn
+		Tooltip: ""
+	}
+
 	NoxusBoss: {
 		Label: Calamity: Wrath of the Gods
 		Tooltip: ""
 	}
 
-	CalValEX: {
-		Label: Calamity's Vanities
+	PrimeRework: {
+		Label: Mech Bosses Rework
+		Tooltip: ""
+	}
+
+	Redemption: {
+		Label: Mod of Redemption
 		Tooltip: ""
 	}
 
@@ -39,6 +59,21 @@ RainbowConfig: {
 
 	SpiritMod: {
 		Label: Spirit Mod
+		Tooltip: ""
+	}
+
+	Spooky: {
+		Label: Spooky
+		Tooltip: ""
+	}
+
+	StarlightRiver: {
+		Label: Starlight River
+		Tooltip: ""
+	}
+
+	ThoriumMod: {
+		Label: Thorium
 		Tooltip: ""
 	}
 }

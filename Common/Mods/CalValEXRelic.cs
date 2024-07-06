@@ -14,7 +14,10 @@ namespace ColouredModsRelics.Common.Mods
     {
         public override string ModName => "CalValEX";
 
-        public override MethodBase HookOrigin => ModLoader.GetMod("CalamityMod").Code.GetType(BaseRelicTileType).GetMethod("SpecialDraw", BindingFlags.Public | BindingFlags.Instance);
+        public CalValEXRelic() : base()
+        {
+            HookInfo = new MethodBaseInfo("CalamityMod", "CalamityMod.Tiles.BaseTiles.BaseBossRelic", "SpecialDraw");
+        }
 
         public override ILContext.Manipulator Manip => il =>
         {
@@ -23,7 +26,7 @@ namespace ColouredModsRelics.Common.Mods
             if (cursor.TryGotoNext(MoveType.After, i => i.MatchLdarg0(), i => i.MatchLdfld(out _), i => i.MatchCallvirt(out _)))
             {
                 cursor.EmitLdarg0();
-                cursor.EmitCall(typeof(ModTile).GetProperty("Type", BindingFlags.Instance | BindingFlags.Public).GetGetMethod());
+                cursor.EmitCall(ModTile_Type);
                 cursor.EmitDelegate<Func<Texture2D, int, Texture2D>>((tex, type) => (Active && type == RelicTileTypes[0]) ? ColoredRelicTileAssets[type].Value : tex);
             }
         };

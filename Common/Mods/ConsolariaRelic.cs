@@ -10,7 +10,13 @@ namespace ColouredModsRelics.Common.Mods
     public class ConsolariaRelic : ModRainbowRelics
     {
         public override string ModName => "Consolaria";
-        public override MethodBase HookOrigin => Mod.Code.GetType(BaseRelicTileType).GetMethod("SpecialDraw", BindingFlags.Public | BindingFlags.Instance);
+
+        private static readonly string[] bosses = { "LepusRelic", "TurkorRelic", "OcramRelic" };
+
+        public ConsolariaRelic() : base() {
+            HookInfo = new MethodBaseInfo(ModName, BaseRelicTileType, "SpecialDraw");
+        }
+
         public override ILContext.Manipulator Manip => il =>
         {
             ILCursor cursor = new(il);
@@ -18,12 +24,13 @@ namespace ColouredModsRelics.Common.Mods
             if (cursor.TryGotoNext(MoveType.After, i => i.MatchLdarg0(), i => i.MatchLdfld(out _), i => i.MatchCallvirt(out _)))
             {
                 cursor.EmitLdarg0();
-                cursor.EmitCall(typeof(ModTile).GetProperty("Type", BindingFlags.Instance | BindingFlags.Public).GetGetMethod());
+                cursor.EmitCall(ModTile_Type);
                 cursor.EmitDelegate<Func<Texture2D, int, Texture2D>>((tex, i) => Active ? ColoredRelicTileAssets[i].Value : tex);
             }
         };
-        private readonly string[] bosses = { "LepusRelic", "TurkorRelic", "OcramRelic" };
+
         public override string BaseRelicTileType => "Consolaria.Content.Tiles.BossRelic";
+
         public override IEnumerable<ModItem> GetRelicItems()
         {
             List<ModItem> items = new();

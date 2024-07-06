@@ -1,14 +1,21 @@
 ﻿[h1] Rainbow Master: Colored Relics[/h1]
 This mod provides relic coloring for the following mods:
 [olist]
-[*] Thorium Mod
+[*] Calamity's Vanities
+[*] Hunt of the Old God
 [*] Catalyst Mod
 [*] Consolaria
-[*] Hunt of old god
+[*] Homeward Journey
+[*] Coralite
+[*] Dormant Dawn
 [*] Calamity: Wrath of the Gods
-[*] Spirit Mod
+[*] Mech Bosses Rework
+[*] Mod of Redemption
 [*] Secrets Of The Shadows
-[*] Calamity's Vanities Mod
+[*] Spirit Mod
+[*] Spooky Mod
+[*] Starlight River
+[*] Thorium Mod
 [/olist]
 
 Fed up with colored relics? Craving the simplicity of the original design?
@@ -19,4 +26,4 @@ Concerned about disabling this mod after use, fearing crashes similar to the Col
 
 [i] Thank you for the help provided by Lastprismer, Hakuzousu, and CallMeXianbei![/i]
 
-[quote=tModLoader]Developed By 幻尘 & Lastprismer[/quote]
+[quote=tModLoader]Developed By 幻尘 & Lastprismer & 叫我仙贝[/quote]
