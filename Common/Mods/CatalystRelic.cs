@@ -15,7 +15,7 @@ namespace ColouredModsRelics.Common.Mods
 
         public CatalystRelic() : base()
         {
-            HookInfo = new MethodBaseInfo(ModName, "CatalystMod.Tiles.Furniture.BossTrophies.SuperbossRelics", "SpecialDraw");
+            HookInfo = new MethodBaseInfo(ModName, "CatalystMod.Tiles.Furniture.BossRelics", "SpecialDraw", BindingFlags.Public | BindingFlags.Instance);
         }
 
         public override ILContext.Manipulator Manip => il =>
@@ -41,7 +41,7 @@ namespace ColouredModsRelics.Common.Mods
 
         public override IEnumerable<ModTile> GetRelicTiles()
         {
-            if (Mod.TryFind("SuperbossRelics", out ModTile relicTile))
+            if (Mod.TryFind("BossRelics", out ModTile relicTile))
                 return [relicTile];
             else
             {

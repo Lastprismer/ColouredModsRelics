@@ -1,5 +1,5 @@
 displayName = 虹彩大师 Rainbow Master: Colored Relics
 author = 幻尘 & Lastprismer
-version = 0.1.0.5
+version = 0.1.0.6
 softAfter = CalValEX, CalamityHunt, CatalystMod, Consolaria, ContinentOfJourney, Coralite, DDMod, NoxusBoss, PrimeRework, Redemption, SOTS, SpiritMod, Spooky, StarlightRiver, ThoriumMod
 side = Client
